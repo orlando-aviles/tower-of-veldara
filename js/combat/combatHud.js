@@ -10,6 +10,7 @@ const ui = {
   enemyHp: null,
   enemyAtb: null,
   enemyChain: null,
+  enemyName: null,
   staggerTag: null,
   combatFx: null
 };
@@ -18,11 +19,19 @@ export function initCombatHud() {
   logEl = document.getElementById("log");
   partyHud = document.getElementById("partyHud");
 
-  ui.enemyHp = document.getElementById("enemy-hp");
-  ui.enemyAtb = document.getElementById("enemy-atb");
+  ui.enemyHp    = document.getElementById("enemy-hp");
+  ui.enemyAtb   = document.getElementById("enemy-atb");
   ui.enemyChain = document.getElementById("enemy-chain");
+  ui.enemyName  = document.querySelector(".enemyName");
   ui.staggerTag = document.getElementById("staggerTag");
-  ui.combatFx = document.getElementById("combatFx");
+  ui.combatFx   = document.getElementById("combatFx");
+}
+
+export function updateEnemyName() {
+  if (!ui.enemyName) return;
+  ui.enemyName.textContent = enemy.boss
+    ? `◈ ${enemy.name}`
+    : enemy.name;
 }
 
 export function spawnFloatingNumber(text, x, y, type = "damage") {

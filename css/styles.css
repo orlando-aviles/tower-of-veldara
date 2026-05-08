@@ -46,6 +46,39 @@ FIELD WORLD
   display:block;
 }
 
+/* =========================
+FIELD HUD  (depth + XP)
+========================= */
+
+#fieldHud{
+  position:fixed;
+  top:10px;
+  left:10px;
+  z-index:5;
+  pointer-events:none;
+  user-select:none;
+  background:rgba(7,9,16,0.82);
+  border:1px solid rgba(90,130,220,0.15);
+  border-radius:10px;
+  padding:7px 12px;
+  font-size:11px;
+  color:#6a88bb;
+  letter-spacing:.4px;
+  font-family:'Courier New',Courier,monospace;
+}
+
+#fieldDepth{
+  color:#aa55ff;
+  font-weight:700;
+  font-size:12px;
+  margin-bottom:2px;
+}
+
+#fieldXP{
+  font-size:10px;
+  opacity:.8;
+}
+
 #fieldMenuBtn{
   position:fixed;
   top:10px;
@@ -346,4 +379,144 @@ COMBAT LOG
 
 #log div{
   margin-bottom:2px;
+}
+
+/* =========================
+FIELD MENU OVERLAY
+========================= */
+
+#fieldMenu {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+#fieldMenu.open {
+  display: flex;
+}
+
+#fieldMenuCard {
+  width: min(340px, calc(100vw - 24px));
+  background: linear-gradient(180deg, #0f1628, #070a14);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow:
+    inset 0 0 0 1px rgba(120,160,255,0.18),
+    0 20px 60px rgba(0,0,0,0.8);
+}
+
+#fieldMenuTitle {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #aa55ff;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+#fieldMenuParty {
+  margin-bottom: 14px;
+}
+
+.fmPartyRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(120,160,255,0.08);
+  font-size: 11px;
+  color: #9fb4ff;
+}
+
+.fmPartyRow:last-child { border-bottom: none; }
+
+.fmName  { font-weight: 700; color: #d2e0ff; min-width: 60px; }
+.fmRole  { font-size: 10px; opacity: 0.7; }
+.fmStats { font-size: 10px; opacity: 0.65; font-family: 'Courier New', monospace; }
+
+#fieldMenuActions {
+  display: flex;
+  gap: 8px;
+}
+
+.fmBtn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #141c33, #0b1020);
+  color: #a8c4ff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow:
+    inset 0 0 0 1px rgba(120,160,255,0.2),
+    0 2px 10px rgba(0,0,0,0.5);
+}
+
+.fmBtn:hover  { background: linear-gradient(180deg, #1b2550, #0f1633); }
+.fmBtn:active { transform: scale(0.98); }
+
+#fieldMenuHint {
+  margin-top: 10px;
+  font-size: 10px;
+  text-align: center;
+  color: rgba(120,160,255,0.4);
+  letter-spacing: 0.4px;
+}
+
+
+/* =========================
+DEPTH TRANSITION OVERLAY
+========================= */
+
+#depthTransition {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s ease;
+}
+
+#depthTransition.fade-in  { opacity: 1; pointer-events: all; }
+#depthTransition.fade-out { opacity: 0; pointer-events: none; }
+
+#depthTransitionText {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #aa55ff;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s ease 0.2s, transform 0.3s ease 0.2s;
+}
+
+#depthTransition.fade-in #depthTransitionText {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================
+EXIT PORTAL  (drawn on canvas, CSS for pulse ring)
+========================= */
+
+@keyframes portalPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(170,85,255,0.6); }
+  70%  { box-shadow: 0 0 0 18px rgba(170,85,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(170,85,255,0); }
 }

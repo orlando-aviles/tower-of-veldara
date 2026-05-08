@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Veldara Project</title>
+<title>VFA – Prologue</title>
 <link rel="stylesheet" href="css/styles.css" />
 </head>
 
@@ -14,8 +14,31 @@
   <canvas id="c"></canvas>
 </div>
 
+<!-- ===== FIELD HUD ===== -->
+<div id="fieldHud">
+  <div id="fieldDepth">Depth 1</div>
+  <div id="fieldXP">Lv1 · 0/30 XP</div>
+</div>
+
 <!-- ===== FIELD MENU BUTTON ===== -->
 <div id="fieldMenuBtn">☰</div>
+
+<!-- ===== FIELD MENU OVERLAY ===== -->
+<div id="fieldMenu">
+  <div id="fieldMenuCard">
+    <div id="fieldMenuTitle">— Field Menu —</div>
+    <div id="fieldMenuParty"></div>
+    <div id="fieldMenuActions">
+      <button class="fmBtn" id="fieldMenuClose">Resume</button>
+    </div>
+    <div id="fieldMenuHint">Q / E — shift paradigm in combat</div>
+  </div>
+</div>
+
+<!-- ===== DEPTH TRANSITION ===== -->
+<div id="depthTransition">
+  <div id="depthTransitionText">Entering Depth 2</div>
+</div>
 
 <!-- ===== COMBAT SCENE ===== -->
 <div id="combatScene">
@@ -25,7 +48,7 @@
 
   <!-- ENEMY HUD -->
   <div id="enemyHud">
-    <div class="enemyName">Enemy</div>
+    <div class="enemyName">—</div>
 
     <div class="hudBar hp">
       <div class="hudFill" id="enemy-hp"></div>
